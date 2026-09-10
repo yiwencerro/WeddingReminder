@@ -167,10 +167,11 @@
     margin-bottom:4px;
   }
 
-  .event .title .location{
-    font-size:14px;
+  .event .outdoor{
+    font-size:16px;
     font-weight:400;
     color:var(--muted);
+    white-space:nowrap;
   }
 
   .event .desc{
@@ -188,7 +189,7 @@
     border-radius:12px;
     border-bottom:none;
     margin:8px 0;
-    padding:17px 14px;
+    padding:17px 0;
   }
 
   .event.ceremony{
@@ -196,7 +197,7 @@
     border-radius:12px;
     border-bottom:none;
     margin:8px 0;
-    padding:17px 14px;
+    padding:17px 0;
   }
 
   .atglance{
@@ -290,7 +291,7 @@
     }
 
     h1{
-      font-size:40px;
+      font-size:34px;
       line-height:1.08;
     }
 
@@ -310,11 +311,7 @@
     }
 
     .arrival{
-      flex-direction:column;
-      align-items:flex-start;
-      gap:14px;
-      padding:24px 20px;
-      border-radius:16px;
+      display:none;
     }
 
     .arrival .label{
@@ -366,8 +363,10 @@
       line-height:1.4;
     }
 
-    .event .title .location{
-      font-size:16px;
+    .event .outdoor{
+      font-size:19px;
+      font-weight:400;
+      color:var(--muted);
     }
 
     .event .desc{
@@ -376,8 +375,13 @@
     }
 
     .event.emphasis{
-      margin:12px -4px;
-      padding:18px 14px;
+      margin:12px 0;
+      padding:20px 0;
+    }
+
+    .event.ceremony{
+      margin:12px 0;
+      padding:20px 0;
     }
 
     .atglance{
@@ -436,7 +440,97 @@
     .monogram{
       display:none;
     }
-  }</style>
+  }
+  .mobile-priority{
+    display:none;
+  }
+
+  @media (max-width:760px){
+    .mobile-priority{
+      display:block;
+      margin-bottom:16px;
+    }
+
+    .mobile-priority-card{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:16px;
+      box-shadow:var(--shadow);
+      padding:16px;
+    }
+
+    .mobile-priority-title{
+      font-size:17px;
+      font-weight:700;
+      color:var(--muted);
+      margin-bottom:12px;
+    }
+
+    .mobile-key-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
+
+    .mobile-key{
+      background:var(--soft);
+      border-radius:12px;
+      padding:14px 12px;
+    }
+
+    .mobile-key.important{
+      grid-column:1 / -1;
+      background:var(--sage-dark);
+      color:white;
+    }
+
+    .mobile-key .t{
+      font-size:27px;
+      font-weight:800;
+      line-height:1.05;
+      margin-bottom:5px;
+    }
+
+    .mobile-key .l{
+      font-size:16px;
+      line-height:1.35;
+      font-weight:700;
+    }
+
+    .mobile-key .s{
+      font-size:14px;
+      line-height:1.4;
+      margin-top:4px;
+      opacity:.85;
+    }
+
+    .mobile-scroll-hint{
+      margin-top:10px;
+      text-align:center;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    /* On phones, don't repeat the desktop At a Glance card */
+    aside.card{
+      display:none;
+    }
+
+    /* Make the detailed timeline slightly more compact after the summary */
+    .section-head span{
+      display:none;
+    }
+
+    .timeline .event{
+      padding:17px 0;
+    }
+
+    .timeline .event .desc{
+      font-size:18px;
+    }
+  }
+
+</style>
 </head>
 
 <body>
@@ -451,6 +545,35 @@
     <div class="monogram">M &amp; Y</div>
   </div>
 
+
+  <section class="mobile-priority">
+    <div class="mobile-priority-card">
+      <div class="mobile-priority-title">Most Important Today</div>
+
+      <div class="mobile-key-grid">
+        <div class="mobile-key important">
+          <div class="t">11:45 AM</div>
+          <div class="l">Arrive at the Church</div>
+          <div class="s">Ceremony begins at 12:00 PM</div>
+        </div>
+
+        <div class="mobile-key">
+          <div class="t">3:00 PM</div>
+          <div class="l">Bellport Inn</div>
+          <div class="s">Official cocktail hour</div>
+        </div>
+
+        <div class="mobile-key">
+          <div class="t">5:00 PM</div>
+          <div class="l">Dinner</div>
+          <div class="s">Served around 5 PM</div>
+        </div>
+      </div>
+
+      <div class="mobile-scroll-hint">Scroll for the full timeline &amp; Q&amp;A ↓</div>
+    </div>
+  </section>
+
   <section class="arrival">
     <div>
       <div class="label">Suggested Church Arrival</div>
@@ -458,7 +581,6 @@
     </div>
     <div class="copy">
       Please plan to arrive at Mary Immaculate Roman Catholic Church by 11:45 AM.
-      
       The ceremony begins promptly at 12:00 PM.
     </div>
   </section>
@@ -494,7 +616,7 @@
         <div class="event">
           <div class="time">From 2:00 PM</div>
           <div>
-            <div class="title">Early Drinks &amp; Live Music <span class="location">(Outdoor)</span></div>
+            <div class="title">Early Drinks &amp; Live Music <span class="outdoor">(Outdoor)</span></div>
             <div class="desc">
               Drinks and refreshments will begin to be available at Bellport Inn backyard, with live music from our trio.
             </div>
@@ -504,7 +626,7 @@
         <div class="event emphasis">
           <div class="time">3:00 PM</div>
           <div>
-            <div class="title">Official Cocktail Hour <span class="location">(Outdoor)</span></div>
+            <div class="title">Official Cocktail Hour <span class="outdoor">(Outdoor)</span></div>
             <div class="desc"><strong>Please plan to arrive at Bellport Inn by 3:00 PM.</strong> Our official cocktail hour begins then.</div>
           </div>
         </div>
@@ -512,7 +634,7 @@
         <div class="event">
           <div class="time">Around 5:00 PM</div>
           <div>
-            <div class="title">Dinner <span class="location">(Outdoor)</span></div>
+            <div class="title">Dinner <span class="outdoor">(Outdoor)</span></div>
             <div class="desc">Dinner will be served outdoors at Bellport Inn.</div>
           </div>
         </div>
@@ -520,7 +642,7 @@
         <div class="event">
           <div class="time">Around 7:30 PM</div>
           <div>
-            <div class="title">Cake Cutting <span class="location">(Outdoor)</span></div>
+            <div class="title">Cake Cutting <span class="outdoor">(Outdoor)</span></div>
           </div>
         </div>
 
@@ -582,7 +704,7 @@
       <div class="answer">
         <strong>Ceremony:</strong> Mary Immaculate Roman Catholic Church<br>
         16 Browns Ln, Bellport, NY 11713<br><br>
-        <strong>Reception:</strong> Bellport Inn (Outdoor) <br>
+        <strong>Reception:</strong> Bellport Inn<br>
         160 S Country Rd, Bellport, NY 11713
       </div>
     </details>
