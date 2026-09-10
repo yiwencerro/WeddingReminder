@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>M & Y Wedding Day Guide</title>
+<style>
+  :root{
+    --bg:#f5f3ee;
+    --panel:#fbfaf7;
+    --ink:#2f332f;
+    --muted:#6e756d;
+    --sage:#7f8f7d;
+    --sage-dark:#5f6f5e;
+    --line:#d9ddd5;
+    --soft:#ecefe8;
+    --shadow:0 8px 24px rgba(58,66,58,.06);
+    --radius:18px;
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    font-size:17px;
+  }
+
+  .wrap{
+    max-width:1050px;
+    margin:0 auto;
+    padding:36px 20px 60px;
+  }
+
+  .topbar{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:20px;
+    margin-bottom:22px;
+  }
+
+  .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:.14em;
+    font-size:12px;
+    color:var(--sage-dark);
+    font-weight:700;
+    margin-bottom:8px;
+  }
+
+  h1{
+    margin:0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size:42px;
+    line-height:1.05;
+    font-weight:500;
+  }
+
+  .date{
+    color:var(--muted);
+    margin-top:9px;
+    font-size:15px;
+  }
+
+  .monogram{
+    border:1px solid var(--line);
+    background:var(--panel);
+    border-radius:999px;
+    padding:12px 15px;
+    font-family:Georgia, "Times New Roman", serif;
+    color:var(--sage-dark);
+    box-shadow:var(--shadow);
+    white-space:nowrap;
+  }
+
+  .arrival{
+    background:var(--sage-dark);
+    color:white;
+    border-radius:var(--radius);
+    padding:24px 26px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:24px;
+    box-shadow:var(--shadow);
+    margin-bottom:18px;
+  }
+
+  .arrival .label{
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    opacity:.8;
+    margin-bottom:6px;
+    font-weight:700;
+  }
+
+  .arrival .time{
+    font-size:38px;
+    font-weight:700;
+    line-height:1;
+  }
+
+  .arrival .copy{
+    max-width:540px;
+    font-size:17px;
+    line-height:1.6;
+    opacity:.95;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns: 2fr 1fr;
+    gap:18px;
+    margin-bottom:18px;
+  }
+
+  .card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+  }
+
+  .section-head{
+    padding:20px 22px 8px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+
+  .section-head h2{
+    margin:0;
+    font-size:19px;
+    font-weight:700;
+  }
+
+  .section-head span{
+    color:var(--muted);
+    font-size:12px;
+  }
+
+  .timeline{
+    padding:4px 22px 22px;
+  }
+
+  .event{
+    display:grid;
+    grid-template-columns:130px 1fr;
+    gap:18px;
+    padding:17px 0;
+    border-bottom:1px solid var(--line);
+  }
+
+  .event:last-child{border-bottom:none}
+
+  .event .time{
+    font-weight:700;
+    color:var(--sage-dark);
+    font-size:15px;
+  }
+
+  .event .title{
+    font-weight:700;
+    margin-bottom:4px;
+  }
+
+  .event .outdoor{
+    font-size:16px;
+    font-weight:400;
+    color:var(--muted);
+    white-space:nowrap;
+  }
+
+  .event .desc{
+    color:var(--muted);
+    line-height:1.45;
+    font-size:14px;
+  }
+
+  .event.soft{
+    border-bottom:1px solid var(--line);
+  }
+
+  .event.emphasis{
+    background:var(--soft);
+    border-radius:12px;
+    border-bottom:none;
+    margin:8px 0;
+    padding:17px 0;
+  }
+
+  .event.ceremony{
+    background:var(--soft);
+    border-radius:12px;
+    border-bottom:none;
+    margin:8px 0;
+    padding:17px 0;
+  }
+
+  .atglance{
+    padding:6px 18px 18px;
+  }
+
+  .stat{
+    padding:18px 2px;
+    border-bottom:1px solid var(--line);
+  }
+  .stat:last-child{border-bottom:none}
+  .stat .big{
+    font-size:30px;
+    font-weight:700;
+    color:var(--sage-dark);
+    line-height:1.1;
+  }
+  .stat .big .ampm{
+    font-size:15px;
+    font-weight:700;
+    letter-spacing:.03em;
+  }
+  .stat .small{
+    color:var(--muted);
+    font-size:15px;
+    line-height:1.4;
+    margin-top:5px;
+  }
+
+  .faq-wrap{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    overflow:hidden;
+  }
+
+  .faq-title{
+    padding:21px 22px 11px;
+    font-size:19px;
+    font-weight:700;
+  }
+
+  details{
+    border-top:1px solid var(--line);
+    padding:0 22px;
+  }
+
+  summary{
+    list-style:none;
+    cursor:pointer;
+    padding:18px 0;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+  }
+
+  summary::-webkit-details-marker{display:none}
+  summary::after{
+    content:"+";
+    font-size:23px;
+    color:var(--sage-dark);
+    font-weight:400;
+  }
+  details[open] summary::after{content:"–"}
+
+  .answer{
+    padding:0 0 18px;
+    color:var(--muted);
+    font-size:16px;
+    line-height:1.65;
+    max-width:850px;
+  }
+
+  .footer{
+    margin-top:20px;
+    text-align:center;
+    color:var(--muted);
+    font-size:12px;
+  }
+
+  @media (max-width:760px){
+    body{
+      font-size:19px;
+    }
+
+    .wrap{
+      padding:20px 12px 40px;
+    }
+
+    h1{
+      font-size:34px;
+      line-height:1.08;
+    }
+
+    .date{
+      font-size:19px;
+      line-height:1.5;
+    }
+
+    .eyebrow{
+      font-size:14px;
+      letter-spacing:.11em;
+    }
+
+    .topbar{
+      align-items:center;
+      margin-bottom:18px;
+    }
+
+    .arrival{
+      display:none;
+    }
+
+    .arrival .label{
+      font-size:15px;
+    }
+
+    .arrival .time{
+      font-size:48px;
+    }
+
+    .arrival .copy{
+      font-size:20px;
+      line-height:1.65;
+    }
+
+    .grid{
+      grid-template-columns:1fr;
+      gap:16px;
+    }
+
+    .section-head{
+      padding:22px 18px 10px;
+    }
+
+    .section-head h2{
+      font-size:24px;
+    }
+
+    .section-head span{
+      font-size:15px;
+    }
+
+    .timeline{
+      padding:4px 18px 22px;
+    }
+
+    .event{
+      grid-template-columns:1fr;
+      gap:8px;
+      padding:20px 0;
+    }
+
+    .event .time{
+      font-size:20px;
+    }
+
+    .event .title{
+      font-size:22px;
+      line-height:1.4;
+    }
+
+    .event .outdoor{
+      font-size:19px;
+      font-weight:400;
+      color:var(--muted);
+    }
+
+    .event .desc{
+      font-size:19px;
+      line-height:1.7;
+    }
+
+    .event.emphasis{
+      margin:12px 0;
+      padding:20px 0;
+    }
+
+    .event.ceremony{
+      margin:12px 0;
+      padding:20px 0;
+    }
+
+    .atglance{
+      display:grid;
+      grid-template-columns:1fr;
+      padding:6px 18px 20px;
+    }
+
+    .stat{
+      padding:18px 0;
+    }
+
+    .stat .big{
+      font-size:38px;
+    }
+
+    .stat .big .ampm{
+      font-size:18px;
+    }
+
+    .stat .small{
+      font-size:19px;
+      line-height:1.5;
+    }
+
+    .faq-title{
+      font-size:24px;
+      padding:22px 18px 12px;
+    }
+
+    details{
+      padding:0 18px;
+    }
+
+    summary{
+      min-height:66px;
+      font-size:20px;
+      line-height:1.5;
+    }
+
+    summary::after{
+      font-size:28px;
+      flex:0 0 auto;
+    }
+
+    .answer{
+      font-size:19px;
+      line-height:1.75;
+    }
+
+    .footer{
+      font-size:15px;
+      margin-top:24px;
+    }
+
+    .monogram{
+      display:none;
+    }
+  }
+  .mobile-priority{
+    display:none;
+  }
+
+  @media (max-width:760px){
+    .mobile-priority{
+      display:block;
+      margin-bottom:16px;
+    }
+
+    .mobile-priority-card{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:16px;
+      box-shadow:var(--shadow);
+      padding:16px;
+    }
+
+    .mobile-priority-title{
+      font-size:17px;
+      font-weight:700;
+      color:var(--muted);
+      margin-bottom:12px;
+    }
+
+    .mobile-key-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:10px;
+    }
+
+    .mobile-key{
+      background:var(--soft);
+      border-radius:12px;
+      padding:14px 12px;
+    }
+
+    .mobile-key.important{
+      grid-column:1 / -1;
+      background:var(--sage-dark);
+      color:white;
+    }
+
+    .mobile-key .t{
+      font-size:27px;
+      font-weight:800;
+      line-height:1.05;
+      margin-bottom:5px;
+    }
+
+    .mobile-key .l{
+      font-size:16px;
+      line-height:1.35;
+      font-weight:700;
+    }
+
+    .mobile-key .s{
+      font-size:14px;
+      line-height:1.4;
+      margin-top:4px;
+      opacity:.85;
+    }
+
+    .mobile-scroll-hint{
+      margin-top:10px;
+      text-align:center;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    /* On phones, don't repeat the desktop At a Glance card */
+    aside.card{
+      display:none;
+    }
+
+    /* Make the detailed timeline slightly more compact after the summary */
+    .section-head span{
+      display:none;
+    }
+
+    .timeline .event{
+      padding:17px 0;
+    }
+
+    .timeline .event .desc{
+      font-size:18px;
+    }
+  }
+
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <div>
+      <div class="eyebrow">M & Y • Wedding Day</div>
+      <h1>Wedding Day Guide</h1>
+      <div class="date">Saturday, September 26, 2026</div>
+    </div>
+    <div class="monogram">M &amp; Y</div>
+  </div>
+
+
+  <section class="mobile-priority">
+    <div class="mobile-priority-card">
+      <div class="mobile-priority-title">Most Important Today</div>
+
+      <div class="mobile-key-grid">
+        <div class="mobile-key important">
+          <div class="t">11:45 AM</div>
+          <div class="l">Arrive at the Church</div>
+          <div class="s">Ceremony begins at 12:00 PM</div>
+        </div>
+
+        <div class="mobile-key">
+          <div class="t">Around 1:00 PM</div>
+          <div class="l">Group Photo</div>
+          <div class="s">Please stay in front of the church after the ceremony</div>
+        </div>
+
+        <div class="mobile-key">
+          <div class="t">3:00 PM</div>
+          <div class="l">Bellport Inn</div>
+          <div class="s">Official cocktail hour</div>
+        </div>
+
+        <div class="mobile-key">
+          <div class="t">5:00 PM</div>
+          <div class="l">Dinner</div>
+          <div class="s">Served around 5 PM</div>
+        </div>
+      </div>
+
+      <div class="mobile-scroll-hint">Scroll for the full timeline &amp; Q&amp;A ↓</div>
+    </div>
+  </section>
+
+  <section class="arrival">
+    <div>
+      <div class="label">Suggested Church Arrival</div>
+      <div class="time">11:45 AM</div>
+    </div>
+    <div class="copy">
+      Please plan to arrive at Mary Immaculate Roman Catholic Church by 11:45 AM.
+      The ceremony begins promptly at 12:00 PM.
+    </div>
+  </section>
+
+  <div class="grid">
+
+    <section class="card">
+      <div class="section-head">
+        <h2>What the Day Looks Like</h2>
+        <span>At a comfortable pace</span>
+      </div>
+
+      <div class="timeline">
+
+        <div class="event ceremony">
+          <div class="time">12:00 PM</div>
+          <div>
+            <div class="title">Wedding Ceremony</div>
+            <div class="desc">Mary Immaculate Roman Catholic Church</div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time">Around 1:00 PM</div>
+          <div>
+            <div class="title">Group Photo</div>
+            <div class="desc">
+              After the ceremony, please stay in front of the church for a group photo with everyone.
+            </div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time">1:00–3:00 PM</div>
+          <div>
+            <div class="title">Free Time</div>
+            <div class="desc">
+              Join us for a walk to the marina, explore nearby, grab a drink, or simply relax before the reception.
+            </div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time">From 2:00 PM</div>
+          <div>
+            <div class="title">Early Drinks &amp; Live Music <span class="outdoor">(Outdoor)</span></div>
+            <div class="desc">
+              Drinks and refreshments will begin to be available at Bellport Inn backyard, with live music from our trio.
+            </div>
+          </div>
+        </div>
+
+        <div class="event emphasis">
+          <div class="time">3:00 PM</div>
+          <div>
+            <div class="title">Official Cocktail Hour <span class="outdoor">(Outdoor)</span></div>
+            <div class="desc"><strong>Please plan to arrive at Bellport Inn by 3:00 PM.</strong> Our official cocktail hour begins then.</div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time">Around 5:00 PM</div>
+          <div>
+            <div class="title">Dinner <span class="outdoor">(Outdoor)</span></div>
+            <div class="desc">Dinner will be served outdoors at Bellport Inn.</div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time">Around 7:30 PM</div>
+          <div>
+            <div class="title">Cake Cutting <span class="outdoor">(Outdoor)</span></div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="time">Until 9:00 PM</div>
+          <div>
+            <div class="title">Bar Service Ends</div>
+            <div class="desc">Bartenders will be available until 9:00 PM.</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <aside class="card">
+      <div class="section-head">
+        <h2>At a Glance</h2>
+      </div>
+      <div class="atglance">
+        <div class="stat">
+          <div class="big">11:45 <span class="ampm">AM</span></div>
+          <div class="small">Suggested church arrival</div>
+        </div>
+        <div class="stat">
+          <div class="big">3:00 <span class="ampm">PM</span></div>
+          <div class="small">Official cocktail hour</div>
+        </div>
+        <div class="stat">
+          <div class="big">5:00 <span class="ampm">PM</span></div>
+          <div class="small">Dinner</div>
+        </div>
+        <div class="stat">
+          <div class="big">7:30 <span class="ampm">PM</span></div>
+          <div class="small">Cake cutting</div>
+        </div>
+        <div class="stat">
+          <div class="big">9:00 <span class="ampm">PM</span></div>
+          <div class="small">Bar service ends</div>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <section class="faq-wrap">
+    <div class="faq-title">Good to Know</div>
+
+    <details>
+      <summary>What should I wear?</summary>
+      <div class="answer">
+        Something suitable for a church ceremony and an outdoor backyard reception.
+        There is no strict dress code. Comfortable shoes are encouraged for the backyard setting.
+      </div>
+    </details>
+
+
+    <details>
+      <summary>Where are the ceremony and reception?</summary>
+      <div class="answer">
+        <strong>Ceremony:</strong> Mary Immaculate Roman Catholic Church<br>
+        16 Browns Ln, Bellport, NY 11713<br><br>
+        <strong>Reception:</strong> Bellport Inn<br>
+        160 S Country Rd, Bellport, NY 11713
+      </div>
+    </details>
+
+    <details>
+      <summary>Where should I park?</summary>
+      <div class="answer">
+        Street parking is available near Bellport Inn. There is also a parking lot between Bellport Ln and Bell St,
+        about one block from both the church and the reception.
+      </div>
+    </details>
+
+    <details>
+      <summary>What can I do during free time?</summary>
+      <div class="answer">
+        From 1:00–3:00 PM, feel free to join us for a walk to the marina, explore nearby, grab a drink,
+        or simply relax. If you return to Bellport Inn early, drinks and live trio music will begin around 2:00 PM.
+      </div>
+    </details>
+
+    <details>
+      <summary>Where are the bathrooms?</summary>
+      <div class="answer">
+        There are two bathrooms on the first floor, just inside the entrance under the wisteria walkway,
+        one on each side of the kitchen. There is also one bathroom upstairs in the main building,
+        at the end of the hallway.
+      </div>
+    </details>
+
+    <details>
+      <summary>Is the reception outdoors?</summary>
+      <div class="answer">
+        Yes. The reception will take place outdoors at Bellport Inn in the backyard and tented area.
+      </div>
+    </details>
+
+  </section>
+
+  <div class="footer">M &amp; Y • September 26, 2026</div>
+
+</div>
+</body>
+</html>
